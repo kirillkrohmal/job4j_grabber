@@ -14,7 +14,7 @@ public class ParserSQL {
     private static final Logger log = Logger.getLogger(ParserSQL.class);
 
     public static void main(String[] args) throws Throwable {
-        List<Vacancy> vacancyList = new ArrayList<>();
+        VacancyStore store = new VacancyStore();
         Document doc = Jsoup.connect("https://www.sql.ru/forum/job")
                 .get();
 
@@ -26,10 +26,10 @@ public class ParserSQL {
             String text = String.valueOf(element.text("msgBody"));
             String link = element.attr("href");
 
-            vacancyList.add(new Vacancy(name, text, link));
+            store.add(new Vacancy(name, text, link));
         }
 
-        vacancyList.forEach(System.out::println);
+        store.findAll().forEach(System.out::println);
 
     }
 }

@@ -1,22 +1,17 @@
 package ru.job4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VacancyStore {
-    Vacancy save;
-    Vacancy find;
+    private final List<Vacancy> vacancies = new ArrayList<>();
 
-    public Vacancy getSave() {
-        return save;
+    public void add(Vacancy vacancy) {
+        vacancies.add(vacancy);
     }
 
-    public void setSave(Vacancy save) {
-        this.save = save;
-    }
-
-    public Vacancy getFind() {
-        return find;
-    }
-
-    public void setFind(Vacancy find) {
-        this.find = find;
+    public List<Vacancy> findAll() {
+        return vacancies;
     }
 }
+
